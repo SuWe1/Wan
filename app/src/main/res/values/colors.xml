@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--深灰色-->
+    <color name="article_deep_gray_color">#A9A9A9</color>
+    <color name="article_gray_color">#808080</color>
+    <color name="article_dim_gray_color">#696969</color>
+    <!--纯黑-->
+    <color name="article_black_color">#000000</color>
+    <!--道奇蓝-->
+    <color name="article_dao_qi_color">#1E90FF</color>
+    <color name="article_blue_color">#0000FF</color>
+    <color name="article_medium_blue_color">#0000CD</color>
+    <color name="article_dark_blue_color">#00008B</color>
+    <color name="article_royal_blue_color">#4169E1</color>
+    <color name="article_light_sky_blue_color">#87CEFA</color>
+    <color name="article_sky_blue_color">#87CEEB</color>
+    <color name="article_slate_blue_color">#6A5ACD</color>
+
+
+    <color name="article_orchid_color">#DA70D6</color>
+    <color name="article_magenta_color">#FF00FF</color>
+    <color name="article_purple_color">#800080</color>
+    <color name="article_indigo_color">#4B0082</color>
+
+
+
+    <color name="article_pink_color">#FFC0CB</color>
+    <color name="article_red_color">#FF0000</color>
+    <color name="article_orange_red_color">#FF4500</color>
+
+
+
+    <color name="article_orange_color">#FFA500</color>
+    <color name="article_yellow_color">#FFFF00</color>
+
+
+    <color name="parting_line_color">#F5F5F5</color>
+</resources>

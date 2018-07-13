@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.github.wan"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+ext {
+    support_version = '27.1.1'
+    anko_version = '0.10.5'
+    rxjava_version = '2.1.16'
+    rxandroid_version = '1.2.1'
+    retrofit_version = '2.4.0'
+    converter_gson_version = '2.2.0'
+    adapter_rxjava_version = '2.2.0'
+    banner_version = '1.4.10'
+    smart_refresh_version = '1.1.0-alpha-12'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$converter_gson_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$adapter_rxjava_version"
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "io.reactivex:rxandroid:$rxandroid_version"
+
+    //banner
+    api "com.youth.banner:banner:$banner_version" //最新版本
+
+    //SmartRefreshLayout
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:$smart_refresh_version"
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12'//没有使用特殊Header，可以不加这行
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
