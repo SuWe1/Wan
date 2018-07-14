@@ -1,20 +1,11 @@
 package com.github.wan.home
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.constraint.ConstraintLayout
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
-import android.util.TypedValue
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.LinearLayout
 import com.github.wan.BaseActivity
 import com.github.wan.R
-import com.github.wan.extentions.hideFragmentToActivity
+import com.github.wan.extentions.hideFragmentFromActivity
 import com.github.wan.extentions.replaceFragmentInActivity
 import com.github.wan.extentions.showFragmentToActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,11 +46,11 @@ class MainActivity : BaseActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                hideFragmentToActivity(homeFragment)
+                hideFragmentFromActivity(homeFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                hideFragmentToActivity(homeFragment)
+                hideFragmentFromActivity(homeFragment)
                 return@OnNavigationItemSelectedListener true
             }
         }

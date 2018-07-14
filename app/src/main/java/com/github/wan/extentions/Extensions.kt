@@ -42,7 +42,9 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
     }
 }
 
-
+/**
+ * show a fragment
+ */
 fun AppCompatActivity.showFragmentToActivity(fragment: Fragment) {
     supportFragmentManager.transact {
         if (fragment.isAdded) {
@@ -53,7 +55,10 @@ fun AppCompatActivity.showFragmentToActivity(fragment: Fragment) {
     }
 }
 
-fun AppCompatActivity.hideFragmentToActivity(fragment: Fragment) {
+/**
+ * hide a fragment
+ */
+fun AppCompatActivity.hideFragmentFromActivity(fragment: Fragment) {
     supportFragmentManager.transact {
         hide(fragment)
     }
@@ -68,6 +73,9 @@ private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Un
     }.commitAllowingStateLoss()
 }
 
+/**
+ * load image by picasso
+ */
 fun ImageView.loadingImage(imaUrl: String) {
     if (TextUtils.isEmpty(imaUrl)) {
         Picasso.get().load(R.mipmap.ic_launcher).into(this)
@@ -76,10 +84,16 @@ fun ImageView.loadingImage(imaUrl: String) {
     }
 }
 
+/**
+ * show snackBar
+ */
 fun Fragment.showSnackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
     Snackbar.make(view, message, duration)
 }
 
+/**
+ * show toast
+ */
 fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, message, duration)
 }
