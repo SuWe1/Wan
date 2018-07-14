@@ -46,8 +46,9 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
 fun AppCompatActivity.showFragmentToActivity(fragment: Fragment) {
     supportFragmentManager.transact {
         if (fragment.isAdded) {
-            remove(fragment)
+            hide(fragment)
         }
+        //显示一个[被隐藏!!]的fragment
         show(fragment)
     }
 }
@@ -64,7 +65,7 @@ fun AppCompatActivity.hideFragmentToActivity(fragment: Fragment) {
 private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
     beginTransaction().apply {
         action()
-    }.commit()
+    }.commitAllowingStateLoss()
 }
 
 fun ImageView.loadingImage(imaUrl: String) {
