@@ -25,6 +25,10 @@ class HomeModel(iHomeModelView: IHomeModelView) : BaseModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { it: ArticleItem? ->
                     if (it != null) {
+                        if (page * 20 + it.data.size >= it.data.total) {
+                            hasMore = false
+                            listener.noMoreData()
+                        }
                         listener.setArticleList(it.data.datas)
                     }
                 }
@@ -59,5 +63,7 @@ class HomeModel(iHomeModelView: IHomeModelView) : BaseModel() {
         fun setArticleList(articles: List<ArticleItemBean>)
 
         fun setBanner(images: List<Any>, titles: List<String>, bannerUrls: List<String>)
+
+        fun noMoreData()
     }
 }

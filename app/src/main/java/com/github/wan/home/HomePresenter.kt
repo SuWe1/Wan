@@ -57,5 +57,9 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
         mPageView.setBannerData(images, titles)
     }
 
+    override fun noMoreData() {
+
+    }
+
 }
 

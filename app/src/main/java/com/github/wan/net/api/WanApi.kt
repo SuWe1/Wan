@@ -12,4 +12,6 @@ interface WanApi {
 
     @GET("/banner/json")
     fun getBanner(): Observable<BannerBean>
+
+
 }
