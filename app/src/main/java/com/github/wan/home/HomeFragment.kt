@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.github.wan.R
 import com.github.wan.adapter.WanAdapter
 import com.github.wan.bean.ArticleItemBean
-import com.github.wan.bean.BannerItemBean
 import com.github.wan.common.BaseFragment
 import com.github.wan.extentions.inflate
 import com.github.wan.other.PicassoImageLoader
@@ -33,8 +32,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         fun newInstance() = HomeFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = container?.inflate(R.layout.fragment_home_layout)!!
+    override fun getContentLayout(): Int = R.layout.fragment_home_layout
+
+    override fun initParams() {
+    }
+
+    override fun initView(view: View) {
         with(view) {
             articleListView = this.findViewById(R.id.article_recycler_view)
             refreshLayout = this.findViewById(R.id.smart_refresh_layout)
@@ -46,9 +49,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 //                presenter.start()
 //            }
 //        })
-        initView()
+        initSubView()
+    }
+
+    override fun initData() {
         init()
-        return view
     }
 
     private fun init() {
@@ -56,7 +61,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         presenter.getBannerData()
     }
 
-    private fun initView() {
+    private fun initSubView() {
         articleListView.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = WanAdapter()

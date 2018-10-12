@@ -5,9 +5,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.github.wan.R
+import com.github.wan.extentions.inflate
 import io.reactivex.disposables.CompositeDisposable
-
-open class BaseFragment : Fragment() {
+/**
+ * getContentLayout -> initParams -> initView -> initData
+ */
+abstract class BaseFragment : Fragment() {
     protected var subscriptions: CompositeDisposable = CompositeDisposable()
 
     override fun onResume() {
@@ -19,4 +23,20 @@ open class BaseFragment : Fragment() {
         super.onPause()
         subscriptions.clear()
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = container?.inflate(R.layout.fragment_home_layout)!!
+        initParams()
+        initView(view)
+        initData()
+        return view
+    }
+
+    abstract fun getContentLayout(): Int
+
+    abstract fun initParams()
+
+    abstract fun initView(view: View)
+
+    abstract fun initData()
 }
