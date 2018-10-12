@@ -109,3 +109,8 @@ fun networkConnected(context: Context): Boolean {
     }
     return false
 }
+
+/**
+ * 避免每次都要写xx::class.java
+ */
+inline fun <reified  T> genericClass() = T::class.java

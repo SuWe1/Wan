@@ -24,25 +24,31 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initView()
-
         homeFragment = supportFragmentManager.findFragmentByTag("homeFragment") as HomeFragment? ?: HomeFragment.newInstance().also {
             replaceFragmentInActivity(it, R.id.fragment_content)
         }
-
         homePresenter = HomePresenter(this, homeFragment)
     }
 
-    private fun initView() {
+    override fun getContentLayout(): Int = R.layout.activity_main
+
+
+    override fun initParams() {
+
+    }
+
+    override fun initView() {
         setSupportActionBar(tool_bar)
 //        supportActionBar!!.setDisplayShowTitleEnabled(false)
         val toggle = ActionBarDrawerToggle(this, drawer_layout, tool_bar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.setDrawerListener(toggle)
+        drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         left_navigation.setNavigationItemSelectedListener(mLeftNavigationItemSelectedListener)
         bottom_navigation.setOnNavigationItemSelectedListener(mBottomNavigationItemSelectedListener)
+    }
+
+    override fun initData() {
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {

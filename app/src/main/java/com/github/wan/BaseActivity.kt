@@ -2,12 +2,32 @@ package com.github.wan
 
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 
-open class BaseActivity : AppCompatActivity() {
+/**
+ * getContentLayout -> initParams -> initView -> initData
+ */
+abstract class BaseActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(getContentLayout())
+        initParams()
+        initView()
+        initData()
+    }
+
+    abstract fun getContentLayout():Int
+
+    abstract fun initParams()
+
+    abstract fun initView()
+
+    abstract fun initData()
 
     //状态栏透明
     fun initStatusBar() {
