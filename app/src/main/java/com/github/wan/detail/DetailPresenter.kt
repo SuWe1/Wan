@@ -1,7 +1,9 @@
 package com.github.wan.detail
 
 import android.content.Context
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 
 /**
  * Created by swyww on 2018/10/13
@@ -20,6 +22,12 @@ class DetailPresenter(context: Context, pageView: DetailContract.View) : DetailC
 
     override fun setWebView(wv: WebView) {
         webView = wv
+        webView!!.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                view?.loadUrl(request?.url.toString())
+                return true
+            }
+        }
     }
 
     override fun showWebView(url: String?) {

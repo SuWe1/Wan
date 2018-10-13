@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import com.github.wan.BaseActivity
 import com.github.wan.R
+import com.github.wan.R.id.drawer_layout
+import com.github.wan.R.id.tool_bar
 import com.github.wan.extentions.hideFragmentFromActivity
 import com.github.wan.extentions.replaceFragmentInActivity
 import com.github.wan.extentions.showFragmentToActivity
