@@ -1,5 +1,6 @@
 package com.github.wan.detail
 
+import android.webkit.WebView
 import com.github.wan.BasePresenter
 import com.github.wan.BaseView
 
@@ -15,6 +16,9 @@ interface DetailContract {
 
     interface Presenter : BasePresenter {
 
+        fun setWebView(wv: WebView)
+
+        fun showWebView(url: String?)
     }
 
 }

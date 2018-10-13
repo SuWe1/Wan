@@ -20,6 +20,7 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
     private var mPage: Int = 0
     private val mPageView: HomeContract.View = pageView
     private val bannerUrl: MutableList<String> = ArrayList()
+    private val allTitle: MutableList<String> = ArrayList()
     private val model: HomeModel
 
     init {
@@ -58,6 +59,7 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
 
     override fun setBanner(images: List<Any>, titles: List<String>, bannerUrls: List<String>) {
         addDataToList(bannerUrl, bannerUrls, true)
+        addDataToList(allTitle, titles, true)
         mPageView.setBannerData(images, titles)
     }
 
@@ -68,6 +70,7 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
     override fun intoBannerDetail(position: Int) {
         val intent = Intent(mContext, genericClass<DetailActivity>())
         intent.putExtra("url", bannerUrl[position])
+        intent.putExtra("title", allTitle[position])
         mContext.startActivity(intent)
     }
 

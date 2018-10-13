@@ -44,6 +44,7 @@ class HomeListDelegateAdapter : DelegateAdapter {
                     //为什么不用lambda？ 就是想试试Object
                     val intent = Intent(context, genericClass<DetailActivity>())
                     intent.putExtra("url", articleItem.link)
+                    intent.putExtra("title", articleItem.title)
                     context.startActivity(intent)
                 }
             })
