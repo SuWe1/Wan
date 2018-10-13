@@ -1,5 +1,6 @@
 package com.github.wan.extentions
 
+import android.app.ProgressDialog.show
 import android.content.Context
 import android.net.ConnectivityManager
 import android.support.annotation.IdRes
@@ -42,6 +43,12 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
     }
 }
 
+fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, @IdRes containerViewId: Int) {
+    supportFragmentManager.transact {
+        add(containerViewId, fragment)
+    }
+}
+
 /**
  * show a fragment
  */
@@ -62,6 +69,21 @@ fun AppCompatActivity.hideFragmentFromActivity(fragment: Fragment) {
     supportFragmentManager.transact {
         hide(fragment)
     }
+}
+
+/**
+ * show a fragment and hide some fragment
+ */
+fun AppCompatActivity.showAndHideFragment(showFragment: Fragment?, vararg hideFragment: Fragment) {
+    for (fragment in hideFragment) {
+        supportFragmentManager.transact {
+            hide(fragment)
+        }
+    }
+    if (showFragment != null)
+        supportFragmentManager.transact {
+            show(showFragment)
+        }
 }
 
 /**

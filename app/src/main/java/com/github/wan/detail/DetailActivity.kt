@@ -1,11 +1,9 @@
 package com.github.wan.detail
 
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
-import com.github.wan.BaseActivity
+import com.github.wan.base.BaseActivity
 import com.github.wan.R
-import com.github.wan.R.id.*
 import kotlinx.android.synthetic.main.activity_webview_detail_layout.*
 
 /**
