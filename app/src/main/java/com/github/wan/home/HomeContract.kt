@@ -17,5 +17,8 @@ interface HomeContract {
         fun refresh()
 
         fun getBannerData()
+
+        fun intoBannerDetail(position:Int)
+
     }
 }

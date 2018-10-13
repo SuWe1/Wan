@@ -111,6 +111,20 @@ fun networkConnected(context: Context): Boolean {
 }
 
 /**
+ * 添加数据到list之前 是否清空
+ */
+
+fun <T> addDataToList(dataList: MutableList<T>?, originData: List<T>?, clear: Boolean = false): Boolean {
+    if (dataList == null) {
+        return false
+    }
+    if (clear) {
+        dataList.clear()
+    }
+    return if (originData != null) dataList.addAll(originData) else false
+}
+
+/**
  * 避免每次都要写xx::class.java
  */
-inline fun <reified  T> genericClass() = T::class.java
+inline fun <reified T> genericClass() = T::class.java

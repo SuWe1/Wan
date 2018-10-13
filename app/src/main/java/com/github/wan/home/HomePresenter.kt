@@ -1,9 +1,13 @@
 package com.github.wan.home
 
 import android.content.Context
+import android.content.Intent
 import com.github.wan.bean.ArticleItem
 import com.github.wan.bean.ArticleItemBean
 import com.github.wan.bean.BannerBean
+import com.github.wan.detail.DetailActivity
+import com.github.wan.extentions.addDataToList
+import com.github.wan.extentions.genericClass
 import com.github.wan.extentions.networkConnected
 import com.github.wan.net.RetrofitClient
 import rx.android.schedulers.AndroidSchedulers
@@ -53,12 +57,18 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
     }
 
     override fun setBanner(images: List<Any>, titles: List<String>, bannerUrls: List<String>) {
-        bannerUrl.addAll(bannerUrls)
+        addDataToList(bannerUrl, bannerUrls, true)
         mPageView.setBannerData(images, titles)
     }
 
     override fun noMoreData() {
 
+    }
+
+    override fun intoBannerDetail(position: Int) {
+        val intent = Intent(mContext, genericClass<DetailActivity>())
+        intent.putExtra("url", bannerUrl[position])
+        mContext.startActivity(intent)
     }
 
 }

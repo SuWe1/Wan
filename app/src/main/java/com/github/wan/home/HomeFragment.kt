@@ -1,5 +1,6 @@
 package com.github.wan.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -10,6 +11,8 @@ import com.github.wan.R
 import com.github.wan.adapter.WanAdapter
 import com.github.wan.bean.ArticleItemBean
 import com.github.wan.common.BaseFragment
+import com.github.wan.detail.DetailActivity
+import com.github.wan.extentions.genericClass
 import com.github.wan.extentions.inflate
 import com.github.wan.other.PicassoImageLoader
 import com.scwang.smartrefresh.header.WaterDropHeader
@@ -43,12 +46,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             refreshLayout = this.findViewById(R.id.smart_refresh_layout)
             banner = this.findViewById(R.id.article_banner)
         }
-//        val button:Button = view.findViewById(R.id.button)
-//        button.setOnClickListener(object : View.OnClickListener {
-//            override fun onClick(p0: View?) {
-//                presenter.start()
-//            }
-//        })
         initSubView()
     }
 
@@ -93,6 +90,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             setIndicatorGravity(BannerConfig.RIGHT)
             //设置是否允许手动滑动轮播图（默认true）
             setViewPagerIsScroll(true)
+            //设置点击事件
+            setOnBannerListener {
+                presenter.intoBannerDetail(it)
+            }
         }
     }
 
