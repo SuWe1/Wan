@@ -41,6 +41,10 @@ class WanAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             oldSize = 0
         }
         datas.addAll(items)
-        notifyItemRangeChanged(oldSize, datas.size)
+        notifyDataSetChanged()
+        // notifyItemRangeChanged 原来有20个 最新数据小于20个 就会有问题
+        // 因为导致外部数据集和recyclerview内部数据集不一致。
+//        notifyItemRangeChanged(oldSize, datas.size)
+        // 可以先notifyItemRangeRemoved(0, previousSize);然后notifyItemRangeInserted(0, items.size());
     }
 }

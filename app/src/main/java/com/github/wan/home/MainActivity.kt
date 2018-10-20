@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.github.wan.base.BaseActivity
 import com.github.wan.R
+import com.github.wan.R.id.drawer_layout
+import com.github.wan.R.id.tool_bar
 import com.github.wan.extentions.*
 import com.github.wan.home.category.CategoryFragment
 import com.github.wan.home.category.CategoryPresenter
@@ -19,21 +22,22 @@ import kotlinx.android.synthetic.main.bar_main_toolbar.*
 
 class MainActivity : BaseActivity() {
 
-    private lateinit var homeFragment: HomeFragment
-    private lateinit var homePresenter: HomePresenter
-    private lateinit var categoryFragment: CategoryFragment
-    private lateinit var categoryPresenter: CategoryPresenter
+    private var homeFragment: HomeFragment? = null
+    private var homePresenter: HomePresenter? = null
+    private var categoryFragment: CategoryFragment? = null
+    private var categoryPresenter: CategoryPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeFragment = supportFragmentManager.findFragmentByTag("homeFragment") as HomeFragment? ?: HomeFragment.newInstance().also {
-            addFragmentToActivity(it, R.id.fragment_content)
+            addFragmentToActivity(it, R.id.fragment_content, "homeFragment")
         }
         categoryFragment = supportFragmentManager.findFragmentByTag("categoryFragment") as CategoryFragment? ?: CategoryFragment.newInstance().also {
-            addFragmentToActivity(it, R.id.fragment_content)
+            addFragmentToActivity(it, R.id.fragment_content, "categoryFragment")
         }
-        homePresenter = HomePresenter(this, homeFragment)
-        categoryPresenter = CategoryPresenter(this, categoryFragment)
+        homePresenter = HomePresenter(this, homeFragment!!)
+        categoryPresenter = CategoryPresenter(this, categoryFragment!!)
+        showFragment(homeFragment)
     }
 
     override fun getContentLayout(): Int = R.layout.activity_main
@@ -59,12 +63,6 @@ class MainActivity : BaseActivity() {
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
         super.onSaveInstanceState(outState, outPersistentState)
-        if (homeFragment.isAdded) {
-            supportFragmentManager.putFragment(outState, "homeFragment", homeFragment)
-        }
-        if (categoryFragment.isAdded) {
-            supportFragmentManager.putFragment(outState, "categoryFragment", categoryFragment)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -85,17 +83,17 @@ class MainActivity : BaseActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
                 tool_bar.setTitle(R.string.title_home)
-//                showAndHideFragment(homeFragment, categoryFragment)
+                showFragment(homeFragment)
                 return@finish true
             }
             R.id.navigation_dashboard -> {
                 tool_bar.setTitle(R.string.title_category)
-//                showAndHideFragment(categoryFragment, homeFragment)
+                showFragment(categoryFragment)
                 return@finish true
             }
             R.id.navigation_notifications -> {
                 tool_bar.setTitle(R.string.title_notifications)
-//                showAndHideFragment(null, homeFragment, categoryFragment)
+                showFragment(null)
                 return@finish true
             }
         }
@@ -106,6 +104,20 @@ class MainActivity : BaseActivity() {
         when (item.itemId) {
 
         }
+    }
+
+    private fun showFragment(fragment: Fragment?) {
+        supportFragmentManager.beginTransaction().apply {
+            homeFragment?.let {
+                hide(it)
+            }
+            categoryFragment?.let {
+                hide(it)
+            }
+            fragment?.let {
+                show(it)
+            }
+        }.commit()
     }
 
 

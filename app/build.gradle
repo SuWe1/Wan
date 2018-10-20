@@ -33,6 +33,7 @@ ext {
     smart_refresh_version = '1.1.0-alpha-12'
     logging_interceptor_version = '3.5.0'
     logger_version = '2.2.0'
+    magic_indicator_version = '1.5.0'
 }
 
 dependencies {
@@ -60,6 +61,9 @@ dependencies {
     //SmartRefreshLayout
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$smart_refresh_version"
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12'//没有使用特殊Header，可以不加这行
+
+    //MagicIndicator
+    implementation "com.github.hackware1993:MagicIndicator:$magic_indicator_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

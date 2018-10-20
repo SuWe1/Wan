@@ -43,9 +43,9 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
     }
 }
 
-fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, @IdRes containerViewId: Int) {
+fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, @IdRes containerViewId: Int, tag: String? = null) {
     supportFragmentManager.transact {
-        add(containerViewId, fragment)
+        add(containerViewId, fragment, tag)
     }
 }
 
@@ -71,20 +71,6 @@ fun AppCompatActivity.hideFragmentFromActivity(fragment: Fragment) {
     }
 }
 
-/**
- * show a fragment and hide some fragment
- */
-fun AppCompatActivity.showAndHideFragment(showFragment: Fragment?, vararg hideFragment: Fragment) {
-    for (fragment in hideFragment) {
-        supportFragmentManager.transact {
-            hide(fragment)
-        }
-    }
-    if (showFragment != null)
-        supportFragmentManager.transact {
-            show(showFragment)
-        }
-}
 
 /**
  * Runs a FragmentTransaction, then calls commit().

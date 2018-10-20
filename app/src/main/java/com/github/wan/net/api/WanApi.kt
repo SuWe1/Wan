@@ -3,10 +3,7 @@ package com.github.wan.net.api
 import com.github.wan.bean.ArticleItem
 import com.github.wan.bean.BannerBean
 import com.github.wan.bean.Category
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import rx.Observable
 
 interface WanApi {
@@ -21,4 +18,7 @@ interface WanApi {
 
     @GET("tree/json")
     fun getCategory(): Observable<Category>
+
+    @GET("/article/list/{page}/json")
+    fun getCategoryArticle(@Path("page") page: Int, @Query("cid") cid: String): Observable<ArticleItem>
 }
