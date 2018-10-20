@@ -10,8 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import com.github.wan.base.BaseActivity
 import com.github.wan.R
-import com.github.wan.R.id.drawer_layout
-import com.github.wan.R.id.tool_bar
 import com.github.wan.extentions.*
 import com.github.wan.home.category.CategoryFragment
 import com.github.wan.home.category.CategoryPresenter
@@ -92,7 +90,7 @@ class MainActivity : BaseActivity() {
                 return@finish true
             }
             R.id.navigation_notifications -> {
-                tool_bar.setTitle(R.string.title_notifications)
+                tool_bar.setTitle(R.string.title_todo)
                 showFragment(null)
                 return@finish true
             }

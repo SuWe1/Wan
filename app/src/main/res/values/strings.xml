@@ -2,7 +2,7 @@
     <string name="app_name">Wan</string>
     <string name="title_home">Home</string>
     <string name="title_category">Category</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_todo">TODO</string>
 
     <!--MainActivity-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
