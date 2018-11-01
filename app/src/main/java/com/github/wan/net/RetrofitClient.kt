@@ -21,12 +21,15 @@ object RetrofitClient {
     private val rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create()
 
 
-    val logging: HttpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
+    private val logging: HttpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
         Logger.i("$TAG $it")
     }).setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    val client: OkHttpClient = OkHttpClient.Builder()
+
+    private val mClient: OkHttpClient = OkHttpClient.Builder()
             .addNetworkInterceptor(logging)
+            .addInterceptor(AddCookiesInterceptor())
+            .addInterceptor(ReceivedCookiesInterceptor())
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
@@ -36,7 +39,7 @@ object RetrofitClient {
         if (mArticleListApi == null) {
             val retrofit: Retrofit = Retrofit.Builder()
                     .baseUrl(WAN_ANDROID_BASE_URL)
-                    .client(client)
+                    .client(mClient)
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build()
