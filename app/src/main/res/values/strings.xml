@@ -9,4 +9,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="menu_title_search">Search</string>
 
+
+    <!--LRActivity-->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="user_name_hint">Input name</string>
+    <string name="user_password_hint">Input password</string>
 </resources>

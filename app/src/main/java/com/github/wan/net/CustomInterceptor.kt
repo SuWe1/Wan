@@ -11,7 +11,9 @@ import okhttp3.Response
  * Created by swyww on 2018/11/1
  */
 
-const val PREF_COOKIE: String = "pref_cookie"
+private const val PREF_COOKIE: String = "pref_cookie"
+private const val SAVE_USER_LOGIN_KEY = "user/login"
+private const val SAVE_USER_REGISTER_KEY = "user/register"
 
 class AddCookiesInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -28,7 +30,10 @@ class AddCookiesInterceptor : Interceptor {
 class ReceivedCookiesInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalResponse: Response = chain.proceed(chain.request())
-        if (!TextUtils.isEmpty(originalResponse.header("Set-Cookie"))) {
+        val url = chain.request().url().toString()
+        //只对登录注册做cookie保存
+        val pingUrl = url.contains(SAVE_USER_LOGIN_KEY) || url.contains(SAVE_USER_REGISTER_KEY)
+        if (pingUrl && !TextUtils.isEmpty(originalResponse.header("Set-Cookie"))) {
             val cookies = HashSet<String>()
             for (header in originalResponse.headers("Set-Cookie")) {
                 cookies.add(header)
