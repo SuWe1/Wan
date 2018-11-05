@@ -1,24 +1,34 @@
 package com.github.wan.login
 
+import android.os.Bundle
 import com.github.wan.R
 import com.github.wan.base.BaseActivity
+import com.github.wan.extentions.addFragmentToActivity
+import kotlinx.android.synthetic.main.activity_lr_layout.*
 
 /**
  * Created by swyww on 2018/11/1
  */
 class LRActivity :BaseActivity() {
 
+    private lateinit var lrPresenter: LRPresenter
+
     override fun getContentLayout(): Int = R.layout.activity_lr_layout
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+       val lrFragment = supportFragmentManager.findFragmentByTag("lrFragment") as LRFragment? ?: LRFragment.newInstance().also {
+           addFragmentToActivity(it,R.id.content_layout,"lrFragment")
+       }
+        lrPresenter = LRPresenter(this,lrFragment)
+    }
+
     override fun initParams() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

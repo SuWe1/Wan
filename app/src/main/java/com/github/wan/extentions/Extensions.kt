@@ -4,6 +4,7 @@ import android.app.ProgressDialog.show
 import android.content.Context
 import android.net.ConnectivityManager
 import android.support.annotation.IdRes
+import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -96,6 +97,10 @@ fun ImageView.loadingImage(imaUrl: String) {
  * show snackBar
  */
 fun Fragment.showSnackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(view, message, duration)
+}
+
+fun Fragment.showSnackbar(view: View, @StringRes message: Int, duration: Int = Snackbar.LENGTH_SHORT) {
     Snackbar.make(view, message, duration)
 }
 

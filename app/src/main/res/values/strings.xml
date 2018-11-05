@@ -15,4 +15,7 @@
     <string name="register">Register</string>
     <string name="user_name_hint">Input name</string>
     <string name="user_password_hint">Input password</string>
+    <string name="login_fail">Login Fail</string>
+    <string name="register_fail">Register Fail</string>
+    <string name="error_input">Please enter the correct username or password</string>
 </resources>

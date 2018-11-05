@@ -23,8 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detail.DetailActivity"
-            />
+        <activity
+            android:name=".detail.DetailActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden" />
+
+        <activity
+            android:name=".login.LRActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden" />
     </application>
 
 </manifest>

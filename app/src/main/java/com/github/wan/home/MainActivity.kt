@@ -1,5 +1,7 @@
 package com.github.wan.home
 
+import android.app.ProgressDialog.show
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
@@ -15,6 +17,7 @@ import com.github.wan.home.category.CategoryFragment
 import com.github.wan.home.category.CategoryPresenter
 import com.github.wan.home.home.HomeFragment
 import com.github.wan.home.home.HomePresenter
+import com.github.wan.login.LRActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bar_main_toolbar.*
 
@@ -100,8 +103,11 @@ class MainActivity : BaseActivity() {
 
     private val mLeftNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-
+            R.id.login -> {
+                startActivity(Intent(this, genericClass<LRActivity>()))
+            }
         }
+        false
     }
 
     private fun showFragment(fragment: Fragment?) {

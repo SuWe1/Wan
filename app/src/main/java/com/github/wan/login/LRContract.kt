@@ -12,6 +12,16 @@ interface LRContract {
         fun getUsername(): String
 
         fun getPassword(): String
+
+        fun showErrorInput()
+
+        fun loginSuccess()
+
+        fun loginFail()
+
+        fun registerSuccess()
+
+        fun registerFail()
     }
 
     interface Presenter : BasePresenter {
