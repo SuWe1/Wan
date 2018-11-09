@@ -24,9 +24,13 @@ abstract class BaseFragment : Fragment() {
         subscriptions.clear()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initParams()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = container?.inflate(getContentLayout())!!
-        initParams()
         initView(view)
         initData()
         return view

@@ -17,11 +17,11 @@ interface LRContract {
 
         fun loginSuccess()
 
-        fun loginFail()
+        fun loginFail(errorMsg:String)
 
         fun registerSuccess()
 
-        fun registerFail()
+        fun registerFail(errorMsg:String)
     }
 
     interface Presenter : BasePresenter {

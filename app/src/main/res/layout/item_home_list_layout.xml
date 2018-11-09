@@ -7,46 +7,73 @@
     android:layout_height="wrap_content"
     android:paddingTop="5dp">
 
-    <TextView
-        android:id="@+id/article_time_tv"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="end"
-        android:maxLines="1"
-        android:textSize="13sp"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:text="2019.09.01" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/article_title_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textColor="@color/article_black_color"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_time_tv"
-        tools:text="Android 仿钉钉、微信 群聊组合头像 CombineBitmap" />
+        <TextView
+            android:id="@+id/article_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/article_black_color"
+            android:textSize="15sp"
+            tools:text="Android 仿钉钉、微信 群聊组合头像 CombineBitmap" />
 
-    <TextView
-        android:id="@+id/article_author_tv"
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/collect_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:srcCompat="@drawable/ic_unlike" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:maxLines="1"
-        android:textColor="@color/article_gray_color"
-        android:textSize="13sp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_title_tv"
-        tools:text="Othershe" />
+        app:layout_constraintTop_toBottomOf="@+id/title_layout">
+
+        <TextView
+            android:id="@+id/article_author_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:textColor="@color/article_gray_color"
+            android:textSize="13sp"
+            tools:text="Othershe" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_access_time_black_24dp" />
+
+        <TextView
+            android:id="@+id/article_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textSize="13sp"
+            tools:text="2019.09.01" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/article_type_tv"
@@ -59,7 +86,7 @@
         android:textColor="@color/article_dao_qi_color"
         android:textSize="13sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/article_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/title_layout"
         tools:text="干货资源 / 课程推荐 " />
 
     <View

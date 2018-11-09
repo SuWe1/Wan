@@ -38,6 +38,7 @@ class ReceivedCookiesInterceptor : Interceptor {
             for (header in originalResponse.headers("Set-Cookie")) {
                 cookies.add(header)
             }
+            Log.v("OkHttp", "Save Header: $cookies")
             PreferenceUtils.putStringSet(PREF_COOKIE, cookies)
         }
         return originalResponse

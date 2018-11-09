@@ -97,18 +97,26 @@ fun ImageView.loadingImage(imaUrl: String) {
  * show snackBar
  */
 fun Fragment.showSnackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
-    Snackbar.make(view, message, duration)
+    Snackbar.make(view, message, duration).show()
 }
 
 fun Fragment.showSnackbar(view: View, @StringRes message: Int, duration: Int = Snackbar.LENGTH_SHORT) {
-    Snackbar.make(view, message, duration)
+    Snackbar.make(view, message, duration).show()
+}
+
+fun AppCompatActivity.showSnackbar(view: View, message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(view, message, duration).show()
+}
+
+fun AppCompatActivity.showSnackbar(view: View, @StringRes message: Int, duration: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(view, message, duration).show()
 }
 
 /**
  * show toast
  */
 fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(context, message, duration)
+    Toast.makeText(context, message, duration).show()
 }
 
 /**

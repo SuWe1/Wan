@@ -1,9 +1,6 @@
 package com.github.wan.net.api
 
-import com.github.wan.bean.ArticleItem
-import com.github.wan.bean.BannerBean
-import com.github.wan.bean.Category
-import com.github.wan.bean.LRBean
+import com.github.wan.bean.*
 import retrofit2.http.*
 import rx.Observable
 
@@ -33,4 +30,10 @@ interface WanApi {
 
     @GET("user/logout/json")
     fun logout(): Observable<Void>
+
+    @POST("lg/collect//{id}/json")
+    fun collect(@Path("id") id: Int): Observable<CommonBean>
+
+    @POST("lg/uncollect_originId/{id}/json")
+    fun unCollect(@Path("id") id: Int): Observable<CommonBean>
 }

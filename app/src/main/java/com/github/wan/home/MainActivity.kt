@@ -7,6 +7,7 @@ import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
@@ -107,6 +108,7 @@ class MainActivity : BaseActivity() {
                 startActivity(Intent(this, genericClass<LRActivity>()))
             }
         }
+        drawer_layout.closeDrawer(GravityCompat.START)
         false
     }
 

@@ -1,6 +1,10 @@
 package com.github.wan.login
 
 import android.content.Context
+import com.github.wan.bean.UserInfo
+import com.github.wan.extentions.genericClass
+import com.github.wan.other.PreferenceUtils
+import com.google.gson.Gson
 
 /**
  * Created by swyww on 2018/11/1
@@ -43,23 +47,23 @@ class LRPresenter(context: Context, pageView: LRContract.View) : LRContract.Pres
     override fun start() {
     }
 
-    override fun loginResult(successful: Boolean) {
+    override fun loginResult(successful: Boolean, errorMsg: String) {
         if (successful) {
             mPageView.loginSuccess()
         } else {
-            mPageView.loginFail()
+            mPageView.loginFail(errorMsg)
         }
     }
 
-    override fun registerResult(successful: Boolean) {
+    override fun registerResult(successful: Boolean, errorMsg: String) {
         if (successful) {
             mPageView.registerSuccess()
         } else {
-            mPageView.registerFail()
+            mPageView.registerFail(errorMsg)
         }
     }
 
-    override fun setData(data: Any) {
+    override fun setData(data: UserInfo) {
     }
 
 }

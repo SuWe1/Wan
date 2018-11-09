@@ -10,7 +10,13 @@ import com.github.wan.base.BaseView
 
 interface DetailContract {
     interface View : BaseView<Presenter> {
+        fun collectSuccess()
 
+        fun collectFail(errorMsg: String)
+
+        fun unCollectSuccess()
+
+        fun unCollectFail(errorMsg: String)
     }
 
 
@@ -19,6 +25,10 @@ interface DetailContract {
         fun setWebView(wv: WebView)
 
         fun showWebView(url: String?)
+
+        fun collectArticle(id: Int)
+
+        fun unCollectArticle(id: Int)
     }
 
 }

@@ -5,8 +5,20 @@ package com.github.wan.bean
  */
 
 data class LRBean(
-        val data: Any?,
+        val data: UserInfo,
         val errorMsg: String,
         val errorCode: Int
 
+)
+
+data class UserInfo(
+        val chapterTops: List<Any>?,
+        val collectIds: List<Int>,
+        val email: String,
+        val icon: String,
+        val id: Int,
+        val password: String,
+        val username: String,
+        val type: Int,
+        val token: String
 )

@@ -2,6 +2,7 @@ package com.github.wan.login
 
 import com.github.wan.base.BaseModel
 import com.github.wan.base.IModelView
+import com.github.wan.bean.UserInfo
 import com.github.wan.home.home.HomeModel
 import com.github.wan.net.RetrofitClient
 import rx.android.schedulers.AndroidSchedulers
@@ -20,7 +21,7 @@ class LRModel(ilrModelView: ILRModelView) : BaseModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    listener.loginResult(it?.errorCode == 0)
+                    listener.loginResult(it?.errorCode == 0, it?.errorMsg ?: "")
                 }
     }
 
@@ -29,7 +30,10 @@ class LRModel(ilrModelView: ILRModelView) : BaseModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    listener.loginResult(it?.errorCode == 0)
+                    listener.loginResult(it?.errorCode == 0, it?.errorMsg ?: "")
+                    if (it?.errorCode == 0) {
+                        listener.setData(it.data)
+                    }
                 }
     }
 
@@ -41,9 +45,13 @@ class LRModel(ilrModelView: ILRModelView) : BaseModel() {
     }
 }
 
-interface ILRModelView : IModelView<Any, LRModel> {
+interface ILRModelView : IModelView<UserInfo, LRModel> {
 
-    fun loginResult(successful: Boolean)
+    fun loginResult(successful: Boolean, errorMsg: String = "")
 
-    fun registerResult(successful: Boolean)
+    fun registerResult(successful: Boolean, errorMsg: String = "")
+
+    override fun setData(data: UserInfo) {
+
+    }
 }

@@ -18,4 +18,12 @@
     <string name="login_fail">Login Fail</string>
     <string name="register_fail">Register Fail</string>
     <string name="error_input">Please enter the correct username or password</string>
+
+    <!--DetailActivity-->
+    <string name="collect">Collect</string>
+    <string name="uncollect">Cancel Collect</string>
+    <string name="collect_success">Collect Success</string>
+    <string name="collect_fail">Collect Fail</string>
+    <string name="uncollect_success">Cancel Success</string>
+    <string name="uncollect_fail">Cancel Fail</string>
 </resources>
