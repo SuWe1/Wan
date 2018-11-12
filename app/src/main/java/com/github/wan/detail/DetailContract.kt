@@ -17,6 +17,8 @@ interface DetailContract {
         fun unCollectSuccess()
 
         fun unCollectFail(errorMsg: String)
+
+        fun showNeedLogin()
     }
 
 

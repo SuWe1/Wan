@@ -116,4 +116,8 @@ class DetailActivity : BaseActivity(), DetailContract.View {
             showSnackbar(content_layout, errorMsg)
         }
     }
+
+    override fun showNeedLogin() {
+        showSnackbar(content_layout, R.string.please_login)
+    }
 }

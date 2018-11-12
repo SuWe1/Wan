@@ -11,6 +11,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.github.wan.base.BaseActivity
 import com.github.wan.R
 import com.github.wan.extentions.*
@@ -19,8 +20,12 @@ import com.github.wan.home.category.CategoryPresenter
 import com.github.wan.home.home.HomeFragment
 import com.github.wan.home.home.HomePresenter
 import com.github.wan.login.LRActivity
+import com.github.wan.net.RetrofitClient
+import com.github.wan.other.LoginManage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bar_main_toolbar.*
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class MainActivity : BaseActivity() {
 
@@ -52,8 +57,13 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         setSupportActionBar(tool_bar)
 //        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, tool_bar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = object : ActionBarDrawerToggle(this, drawer_layout, tool_bar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
+                left_navigation.menu.findItem(R.id.login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
+            }
+        }
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         left_navigation.setNavigationItemSelectedListener(mLeftNavigationItemSelectedListener)
@@ -61,6 +71,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
+        left_navigation.menu.findItem(R.id.login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
@@ -105,12 +116,28 @@ class MainActivity : BaseActivity() {
     private val mLeftNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.login -> {
-                startActivity(Intent(this, genericClass<LRActivity>()))
+                if (LoginManage.isLogin()) {
+                    loginout()
+                } else {
+                    startActivity(Intent(this, genericClass<LRActivity>()))
+                }
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         false
     }
+
+    fun loginout() {
+        LoginManage.clearUserInfo()
+        LoginManage.updateLoginStatus(false)
+        RetrofitClient.getWanApi()!!.logout()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    showSnackbar(drawer_layout, R.string.success)
+                }
+    }
+
 
     private fun showFragment(fragment: Fragment?) {
         supportFragmentManager.beginTransaction().apply {

@@ -5,6 +5,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.github.wan.bean.CommonBean
+import com.github.wan.other.LoginManage
 
 /**
  * Created by swyww on 2018/10/13
@@ -63,11 +64,19 @@ class DetailPresenter(context: Context, pageView: DetailContract.View) : DetailC
     }
 
     override fun collectArticle(id: Int) {
-        model.collectArticle(id)
+        if (LoginManage.isLogin()){
+            model.collectArticle(id)
+        } else {
+            mPageView.showNeedLogin()
+        }
     }
 
     override fun unCollectArticle(id: Int) {
-        model.unCollectArticle(id)
+        if (LoginManage.isLogin()){
+            model.unCollectArticle(id)
+        } else {
+            mPageView.showNeedLogin()
+        }
     }
 
 }

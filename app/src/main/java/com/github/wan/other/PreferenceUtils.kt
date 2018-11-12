@@ -12,6 +12,9 @@ import android.text.TextUtils
 
 object PreferenceUtils {
 
+    const val USERINFO = "user_info"
+    const val ISLOGING = "is_login"
+
     private lateinit var sApplication: Application
 
     private lateinit var mPreference: SharedPreferences

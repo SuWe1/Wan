@@ -22,6 +22,9 @@ class LRModel(ilrModelView: ILRModelView) : BaseModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     listener.loginResult(it?.errorCode == 0, it?.errorMsg ?: "")
+                    if (it?.errorCode == 0) {
+                        listener.setData(it.data)
+                    }
                 }
     }
 

@@ -29,7 +29,7 @@ interface WanApi {
     fun register(@FieldMap params: HashMap<String, String>): Observable<LRBean>
 
     @GET("user/logout/json")
-    fun logout(): Observable<Void>
+    fun logout(): Observable<CommonBean>
 
     @POST("lg/collect//{id}/json")
     fun collect(@Path("id") id: Int): Observable<CommonBean>

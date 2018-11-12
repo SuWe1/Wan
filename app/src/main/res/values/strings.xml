@@ -1,8 +1,11 @@
 <resources>
+    <!--common-->
     <string name="app_name">Wan</string>
     <string name="title_home">Home</string>
     <string name="title_category">Category</string>
     <string name="title_todo">TODO</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
 
     <!--MainActivity-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -12,12 +15,15 @@
 
     <!--LRActivity-->
     <string name="login">Login</string>
+    <string name="loginout">Login Out</string>
     <string name="register">Register</string>
     <string name="user_name_hint">Input name</string>
     <string name="user_password_hint">Input password</string>
     <string name="login_fail">Login Fail</string>
     <string name="register_fail">Register Fail</string>
     <string name="error_input">Please enter the correct username or password</string>
+    <string name="please_login">Please log in first</string>
+    <string name="check">Check</string>
 
     <!--DetailActivity-->
     <string name="collect">Collect</string>

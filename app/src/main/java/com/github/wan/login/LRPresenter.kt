@@ -2,9 +2,8 @@ package com.github.wan.login
 
 import android.content.Context
 import com.github.wan.bean.UserInfo
-import com.github.wan.extentions.genericClass
-import com.github.wan.other.PreferenceUtils
-import com.google.gson.Gson
+import com.github.wan.other.GsonUtils
+import com.github.wan.other.LoginManage
 
 /**
  * Created by swyww on 2018/11/1
@@ -50,6 +49,7 @@ class LRPresenter(context: Context, pageView: LRContract.View) : LRContract.Pres
     override fun loginResult(successful: Boolean, errorMsg: String) {
         if (successful) {
             mPageView.loginSuccess()
+            LoginManage.updateLoginStatus(successful)
         } else {
             mPageView.loginFail(errorMsg)
         }
@@ -58,12 +58,15 @@ class LRPresenter(context: Context, pageView: LRContract.View) : LRContract.Pres
     override fun registerResult(successful: Boolean, errorMsg: String) {
         if (successful) {
             mPageView.registerSuccess()
+            LoginManage.updateLoginStatus(successful)
         } else {
             mPageView.registerFail(errorMsg)
         }
     }
 
     override fun setData(data: UserInfo) {
+        val userInfoStr = GsonUtils.toJson(data)
+        LoginManage.saveUserInfo(userInfoStr)
     }
 
 }

@@ -5,9 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/top_bar"
-        layout="@layout/bar_main_toolbar" />
+    <RelativeLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/rl_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_chevron_left_white_24dp" />
+
+        <TextView
+            android:id="@+id/lr_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/rl_back"
+            android:text="@string/login"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/rl_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:text="@string/check"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -18,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar">
+        app:layout_constraintTop_toBottomOf="@id/action_bar">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/username_edit"
@@ -28,31 +60,30 @@
             app:met_baseColor="@color/colorPrimary"
             app:met_errorColor="@color/article_red_color"
             app:met_floatingLabel="highlight"
-            app:met_singleLineEllipsis="true"
-            app:met_iconLeft="@drawable/ic_person_black_24dp"/>
+            app:met_iconLeft="@drawable/ic_person_black_24dp"
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
             android:hint="@string/user_password_hint"
+            android:inputType="textPassword"
             app:met_baseColor="@color/colorPrimary"
             app:met_errorColor="@color/article_red_color"
             app:met_floatingLabel="highlight"
-            app:met_singleLineEllipsis="true"
             app:met_iconLeft="@drawable/ic_https_black_24dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:inputType="textPassword"
-            />
+            app:met_singleLineEllipsis="true" />
 
         <Button
             android:id="@+id/submit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/login"
-            android:textAllCaps="false"
-            android:layout_gravity="center"/>
+            android:textAllCaps="false" />
     </LinearLayout>
 
 
