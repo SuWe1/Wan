@@ -26,9 +26,11 @@
         <activity
             android:name=".detail.DetailActivity"
             android:configChanges="screenSize|orientation|keyboardHidden" />
-
         <activity
             android:name=".login.LRActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden" />
+        <activity
+            android:name=".collect.CollectActivity"
             android:configChanges="screenSize|orientation|keyboardHidden" />
     </application>
 

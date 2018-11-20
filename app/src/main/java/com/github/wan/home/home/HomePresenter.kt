@@ -33,6 +33,7 @@ class HomePresenter(context: Context, pageView: HomeContract.View) : HomeContrac
     }
 
     override fun refresh() {
+        mPage = 0
         load(0)
     }
 

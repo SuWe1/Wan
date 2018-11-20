@@ -36,4 +36,7 @@ interface WanApi {
 
     @POST("lg/uncollect_originId/{id}/json")
     fun unCollect(@Path("id") id: Int): Observable<CommonBean>
+
+    @GET("lg/collect/list/{page}/json")
+    fun collectList(@Path("page") page: Int): Observable<ArticleItem>
 }

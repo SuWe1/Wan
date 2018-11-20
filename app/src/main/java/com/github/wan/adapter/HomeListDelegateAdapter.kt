@@ -32,7 +32,7 @@ class HomeListDelegateAdapter : DelegateAdapter {
         private val title = itemView.article_title_tv
         private val author = itemView.article_author_tv
         private val type = itemView.article_type_tv
-        private val collectIcon = itemView.collect_icon
+//        private val collectIcon = itemView.collect_icon
 
         @SuppressLint("SetTextI18n")
         fun setData(articleItem: ArticleItemBean) {
@@ -40,11 +40,11 @@ class HomeListDelegateAdapter : DelegateAdapter {
             title.text = articleItem.title
             author.text = articleItem.author
             type.text = "${articleItem.superChapterName}/${articleItem.chapterName}"
-            if (articleItem.collect) {
-                collectIcon.setImageDrawable(context.getDrawable(R.drawable.ic_like))
-            } else {
-                collectIcon.setImageDrawable(context.getDrawable(R.drawable.ic_unlike))
-            }
+//            if (articleItem.collect) {
+//                collectIcon.setImageDrawable(context.getDrawable(R.drawable.ic_like))
+//            } else {
+//                collectIcon.setImageDrawable(context.getDrawable(R.drawable.ic_unlike))
+//            }
             itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     //为什么不用lambda？ 就是想试试Object

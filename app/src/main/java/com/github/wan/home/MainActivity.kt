@@ -14,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import com.github.wan.base.BaseActivity
 import com.github.wan.R
+import com.github.wan.collect.CollectActivity
 import com.github.wan.extentions.*
 import com.github.wan.home.category.CategoryFragment
 import com.github.wan.home.category.CategoryPresenter
@@ -61,7 +62,7 @@ class MainActivity : BaseActivity() {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             override fun onDrawerOpened(drawerView: View) {
                 super.onDrawerOpened(drawerView)
-                left_navigation.menu.findItem(R.id.login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
+                left_navigation.menu.findItem(R.id.menu_login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
             }
         }
         drawer_layout.addDrawerListener(toggle)
@@ -71,7 +72,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-        left_navigation.menu.findItem(R.id.login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
+        left_navigation.menu.findItem(R.id.menu_login).setTitle(if (LoginManage.isLogin()) R.string.loginout else R.string.login)
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
@@ -115,12 +116,15 @@ class MainActivity : BaseActivity() {
 
     private val mLeftNavigationItemSelectedListener = NavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.login -> {
+            R.id.menu_login -> {
                 if (LoginManage.isLogin()) {
                     loginout()
                 } else {
                     startActivity(Intent(this, genericClass<LRActivity>()))
                 }
+            }
+            R.id.menu_collect -> {
+                startActivity(Intent(this, genericClass<CollectActivity>()))
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)

@@ -35,10 +35,12 @@
             android:layout_height="24dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/ic_unlike" />
+            app:srcCompat="@drawable/ic_unlike"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/article_bottom_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -51,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:maxLines="1"
             android:textColor="@color/article_gray_color"
             android:textSize="13sp"
@@ -67,7 +69,7 @@
             android:id="@+id/article_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:gravity="end"
             android:maxLines="1"
@@ -81,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:maxLines="1"
         android:textColor="@color/article_dao_qi_color"
         android:textSize="13sp"
